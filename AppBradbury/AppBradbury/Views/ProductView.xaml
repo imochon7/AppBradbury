@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppBradbury.Views.ProductView"
+             Title="{Binding Product.Title}">
+    <ContentPage.Content>
+        <ScrollView
+        VerticalOptions="Start"
+        HorizontalOptions="CenterAndExpand">
+            <StackLayout
+                Padding="15"
+                VerticalOptions="StartAndExpand"
+                HorizontalOptions="CenterAndExpand">
+                <Grid Padding="0, 0, 0, 20" VerticalOptions="Start" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="225"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout
+                        VerticalOptions="Start"
+                        Grid.Column="0"
+                        Grid.Row="0">
+                        <Image
+                            Aspect="AspectFit"
+                            VerticalOptions="Start"
+                            Source="{Binding Product.UrlCover}"/>
+                    </StackLayout>
+
+                    <StackLayout
+                        VerticalOptions="Start"
+                        Padding="5"
+                        Grid.Column="1"
+                        Grid.Row="0">
+                        <Label 
+                            Text="{Binding Product.Title}"
+                            Style="{StaticResource styleLabelTitle}"/>
+                        <Label 
+                            Text="{Binding Product.Author}"
+                            Style="{StaticResource styleLabelAuthor}"/>
+                        <Label 
+                            Text="{Binding Product.Editorial}"
+                            Style="{StaticResource styleLabelRegular}"/>
+                        <Label 
+                            Text="{Binding Product.Year}"
+                            Style="{StaticResource styleLabelRegular}"/>
+                        <Label
+                            Text="ISBN"
+                            Style="{StaticResource styleLabelBlack}"/>
+                        <Label 
+                            Text="{Binding Product.ISBN}"
+                            Style="{StaticResource styleLabelRegular}"/>
+                        <Label
+                            Text="Pages"
+                            Style="{StaticResource styleLabelBlack}"/>
+                        <Label 
+                            Text="{Binding Product.Pages}"
+                            Style="{StaticResource styleLabelRegular}"/>
+                    </StackLayout>
+                </Grid>
+
+                <StackLayout Margin="0, 15">
+                    <Label
+                        Text="Synopsis"
+                        Style="{StaticResource styleLabelBlack}"/>
+                    <Label 
+                        Text="{Binding Product.Synopsis}"
+                        Style="{StaticResource styleLabelRegular}"/>
+                </StackLayout>
+                <StackLayout
+                    Padding="5"
+                    Style="{StaticResource styleLayout}">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Product.Price, StringFormat='Only {0:N} €'}"
+                        Style="{StaticResource styleLabelWhiteLarge}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Button
+                        Text="View PDF"
+                        Command="{Binding viewPDFCommand}"
+                        Style="{StaticResource styleButton}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
